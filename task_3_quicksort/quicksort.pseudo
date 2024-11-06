@@ -1,0 +1,67 @@
+function  quicksort(input, start, finish) {
+    // input is the unsorted list of strings
+    // start is the (left) starting index 
+    // finish is the (right) ending index
+    // the partition returns the pivot position.
+    index := partition(input, start, finish)
+    // if the left partition is not sorted
+    // then the returned pivot index - 1 is greater 
+    // than start, make a recursive call with parameters
+    // input, start, index - 1 (exclude current pivot)
+    // this will go on until the left subarray is sorted
+    // and basically only one element is left.
+    if start < index - 1 then
+        quicksort(input, start, index - 1)
+    end
+    // The right subarray is sorted when the pivot position
+    // is the last element of the input sequence.
+    if index < finish then
+        quicksort(input, index, finish)
+    end
+}
+
+function partition(input, start, finish) {
+    // formula for the middle pivot
+    pivot := ⌊(start + finish)/2⌋
+    i := start
+    j := finish
+    while i <= j then
+        while input[i] < input[p] then i++
+        while input[j] > input[p] then j--
+        if i <= j then
+            swap(input, i, j)
+            i++
+            j--
+        end 
+    end
+}
+
+function swap(input, i, j){
+    tmp := input[i]
+    input[i] := input[j]
+    input[j] := tmp
+}
+
+function quicksortIterative(input, start, finish)
+    // Create an auxiliary stack 
+    // Push initial values of start and end to stack
+    stack.push(start)
+    stack.push(finish)
+
+    while stack is not empty 
+        // pop end and start indices
+        finish := stack.pop()
+        start := stack.pop()
+        pivot := partition(input, start,finish)
+        // sort left subarray range(start, pivot-1)
+        if pivot - 1 > start then
+            stack.push(start)
+            stack.push(pivot - 1)
+        // sort right subarray range(pivot + 1, end)
+        if pivot + 1 < finish then
+            stack.push(pivot + 1)
+            stack.push(finish)
+
+
+    
+
