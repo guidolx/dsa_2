@@ -70,7 +70,7 @@ def draw_graph(G):
     return pos
 
 
-def draw_mst(T,pos):
+def draw_mst_edge(T,pos):
     """
     Draw the network edges of the MST 
     and pause for 2 seconds.
@@ -113,7 +113,7 @@ def kruskal_mst(G,pos):
             T.add_weighted_edges_from([(u,v,w)])
             uf.union(u, v)
             print(f'Edge added: {sorted_edges[i]}')
-            draw_mst(T,pos)
+            draw_mst_edge(T,pos)
         else:
             print(f'Edge rejected: {sorted_edges[i]}')
         i += 1
