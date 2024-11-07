@@ -1,7 +1,7 @@
 import os
 import random
 
-
+# Possible cell values (blocked = wall, explorable, visited, step of the path to the solution)
 BLOCKED = 0
 EXPLORABLE = 1
 VISITED = 5
@@ -202,7 +202,7 @@ if __name__ == '__main__':
 
     current_path = ""
 
-
+    # print pristine maze 
     print_maze(maze,'')
 
     choice = int(input("Maze solver:\nPress 1 to run the Las Vegas algorithm \nPress 2 to run the recursive backtracking algorithm\nPress 3 to run the LV algoritm 10000 times\nPress 4 to run the deterministic algoritm 10000 times\n"))
