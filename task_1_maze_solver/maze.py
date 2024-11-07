@@ -49,8 +49,10 @@ maze = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ] 
 
-
-def available_directions(row, col,maze):
+# returns a list of explorable cells in the neighbourhood 
+# of the current cell (row,col)
+# if no cell is found, then the list is empty 
+def get_explorable_cells(row, col,maze):
     directions = []
     # i is the index included in the tuple 
     # to match the character in the direction string.
@@ -119,7 +121,7 @@ def find_path_lv(row, col, maze, dest_row,dest_col, solution):
     stack.append((row,col))
     maze[row][col] = VISITED
     while len(stack) > 0 and count < max:
-        directions = available_directions(row,col,maze)
+        directions = get_explorable_cells(row,col,maze)
         n = len(directions)
         cell = None
         if n > 0:    
@@ -137,8 +139,8 @@ def find_path_lv(row, col, maze, dest_row,dest_col, solution):
             return
         
                           
-        # If we reach the destination cell of the matrix, add
-        # the current path to solution and return
+        # If we reach the destination cell of the matrix, 
+        # return
         if cell[0] == dest_row and cell[1] == dest_col:
             solution.append('S')
             return
